@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import { AuthProvider } from "../lib/auth";
-import themeOverride from "../styles/theme";
+import { AuthProvider } from "@/lib/auth";
+import themeOverride from "@/styles/theme";
 
 const theme = extendTheme(themeOverride);
 
