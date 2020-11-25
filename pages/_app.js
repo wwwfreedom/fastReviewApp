@@ -1,15 +1,22 @@
+import Head from "next/head";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { AuthProvider } from "../lib/auth";
-import { ChakraProvider } from "@chakra-ui/react";
-import "../styles/globals.css";
-import theme from "../styles/theme";
+import themeOverride from "../styles/theme";
+
+const theme = extendTheme(themeOverride);
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider theme={theme}>
-      <AuthProvider>
-        <Component {...pageProps} />;
-      </AuthProvider>
-    </ChakraProvider>
+    <>
+      <Head>
+        <title>Fast Review App</title>
+      </Head>
+      <ChakraProvider theme={theme}>
+        <AuthProvider>
+          <Component {...pageProps} />
+        </AuthProvider>
+      </ChakraProvider>
+    </>
   );
 }
 
