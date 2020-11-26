@@ -1,5 +1,4 @@
 import { Logo } from "@/icons/logo";
-import { useAuth } from "@/lib/auth";
 import {
   Flex,
   Link,
@@ -13,8 +12,7 @@ import {
 } from "@chakra-ui/react";
 import AddSiteModal from "./AddSiteModal";
 
-const DashboardShell = ({ children }) => {
-  const auth = useAuth();
+const DashboardShell = ({ children, user }) => {
   return (
     <Flex flexDirection="column">
       <Flex
@@ -30,8 +28,8 @@ const DashboardShell = ({ children }) => {
           <Link>Site</Link>
         </Stack>
         <Flex alignItems="center">
-          <Link mr={4}>Account</Link>
-          <Avatar size="sm" src={auth.user.photoUrl} />
+          {user && <Link mr={4}>Account</Link>}
+          <Avatar size="sm" src={user?.photoUrl} />
         </Flex>
       </Flex>
       <Flex backgroundColor="gray.100" p={8} height="100vh">
