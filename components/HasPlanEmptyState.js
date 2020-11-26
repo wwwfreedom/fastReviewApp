@@ -16,7 +16,13 @@ const HasPlanEmptyState = () => (
         You haven't added any sites.
       </Heading>
       <Text mb={4}>Welcome 👋 Let's get started.</Text>
-      <AddSiteModal />
+      <AddSiteModal
+        TriggerComponent={({ onClick }) => (
+          <Button fontWeight="medium" onClick={onClick}>
+            Add Your First Site
+          </Button>
+        )}
+      />
     </Flex>
   </DashboardShell>
 );

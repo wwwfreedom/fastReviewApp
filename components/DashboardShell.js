@@ -8,8 +8,10 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  Heading
+  Heading,
+  Button
 } from "@chakra-ui/react";
+import AddSiteModal from "./AddSiteModal";
 
 const DashboardShell = ({ children }) => {
   const auth = useAuth();
@@ -41,7 +43,21 @@ const DashboardShell = ({ children }) => {
               </BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
-          <Heading mb={4}>Sites</Heading>
+          <Flex justify="space-between" mb={4}>
+            <Heading>Sites</Heading>
+            <AddSiteModal
+              TriggerComponent={({ onClick }) => (
+                <Button
+                  backgroundColor="black"
+                  color="white"
+                  fontWeight="medium"
+                  onClick={onClick}
+                >
+                  + Add Site
+                </Button>
+              )}
+            />
+          </Flex>
           {children}
         </Flex>
       </Flex>

@@ -1,3 +1,5 @@
+import { useAuth } from "@/lib/auth";
+import { createSite } from "@/lib/firestoreDb";
 import {
   Modal,
   ModalOverlay,
@@ -10,30 +12,49 @@ import {
   Input,
   FormLabel,
   Button,
-  Text
+  Text,
+  useToast
 } from "@chakra-ui/react";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
 const { useDisclosure } = require("@chakra-ui/react");
 
-export default function AddSiteModal() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const initialRef = useRef();
-  const { register, handleSubmit, errors } = useForm();
+const DefaultTriggerComponent = ({ ...props }) => (
+  <Button {...props}>Open</Button>
+);
 
-  const createSite = (value) => {
-    console.log(value);
+export default function AddSiteModal({
+  TriggerComponent = DefaultTriggerComponent
+}) {
+  const initialRef = useRef();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { register, handleSubmit, errors } = useForm();
+  const toast = useToast();
+  const auth = useAuth();
+
+  const onAddSiteSubmit = ({ site, url }) => {
+    createSite({
+      authorId: auth.user.uid,
+      site,
+      url
+    });
+    toast({
+      title: "Success 🙌 ",
+      description: "We've added your site",
+      status: "success",
+      duration: 5000,
+      isClosable: true
+    });
+    onClose();
   };
 
   return (
     <>
-      <Button onClick={onOpen} maxW="200px" fontWeight="medium">
-        Add Your First Site
-      </Button>
+      <TriggerComponent onClick={onOpen} />
 
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent as="form" onSubmit={handleSubmit(createSite)}>
+        <ModalContent as="form" onSubmit={handleSubmit(onAddSiteSubmit)}>
           <ModalHeader fontWeight="bold">Add Site</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
@@ -41,9 +62,11 @@ export default function AddSiteModal() {
               <FormLabel>Name</FormLabel>
               <Input
                 name="site"
-                ref={initialRef}
                 placeholder="Name"
-                ref={register({ required: true })}
+                ref={(ref) => {
+                  initialRef.current = ref;
+                  register(ref, { required: true });
+                }}
               />
               {errors.site && (
                 <Text mt={1} fontSize="xs" color="red.500">
