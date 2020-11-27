@@ -1,3 +1,4 @@
+import { useAuth } from "@/lib/auth";
 import { Logo } from "@/icons/logo";
 import {
   Flex,
@@ -12,7 +13,8 @@ import {
 } from "@chakra-ui/react";
 import AddSiteModal from "./AddSiteModal";
 
-const DashboardShell = ({ children, user }) => {
+const DashboardShell = ({ children }) => {
+  const { user } = useAuth();
   return (
     <Flex flexDirection="column">
       <Flex

@@ -32,10 +32,10 @@ export default function AddSiteModal({
   const toast = useToast();
   const auth = useAuth();
 
-  const onAddSiteSubmit = ({ site, url }) => {
+  const onAddSiteSubmit = ({ name, url }) => {
     createSite({
       authorId: auth.user.uid,
-      site,
+      name,
       url
     });
     toast({
@@ -61,14 +61,14 @@ export default function AddSiteModal({
             <FormControl>
               <FormLabel>Name</FormLabel>
               <Input
-                name="site"
+                name="name"
                 placeholder="Name"
                 ref={(ref) => {
                   initialRef.current = ref;
                   register(ref, { required: true });
                 }}
               />
-              {errors.site && (
+              {errors.name && (
                 <Text mt={1} fontSize="xs" color="red.500">
                   Name field is required
                 </Text>
