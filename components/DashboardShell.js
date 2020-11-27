@@ -48,10 +48,12 @@ const DashboardShell = ({ children }) => {
             <AddSiteModal
               TriggerComponent={({ onClick }) => (
                 <Button
-                  backgroundColor="black"
+                  backgroundColor="gray.900"
                   color="white"
                   fontWeight="medium"
                   onClick={onClick}
+                  _hover={{ bg: "gray.700" }}
+                  _active={{ bg: "gray.800", transform: "scale(0.95)" }}
                 >
                   + Add Site
                 </Button>
