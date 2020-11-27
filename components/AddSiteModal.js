@@ -1,5 +1,7 @@
 import { useAuth } from "@/lib/auth";
 import { createSite } from "@/lib/firestoreDb";
+import formatDate from "@/utils/formatDate";
+import getRestApi from "@/utils/getRestApi";
 import {
   Modal,
   ModalOverlay,
@@ -17,6 +19,7 @@ import {
 } from "@chakra-ui/react";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
+import useSWR, { mutate } from "swr";
 const { useDisclosure } = require("@chakra-ui/react");
 
 const DefaultTriggerComponent = ({ ...props }) => (
@@ -29,15 +32,40 @@ export default function AddSiteModal({
   const initialRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { register, handleSubmit, errors } = useForm();
+  const { data } = useSWR("/api/sites", getRestApi);
   const toast = useToast();
   const auth = useAuth();
 
-  const onAddSiteSubmit = ({ name, url }) => {
-    createSite({
+  const onAddSiteSubmit = async ({ name, url }) => {
+    const newSite = {
       authorId: auth.user.uid,
       name,
       url
-    });
+    };
+
+    // optimistically update the cache and ui
+    mutate(
+      "/api/sites",
+      async (data) => {
+        return {
+          sites: [
+            { ...newSite, createdAt: formatDate(new Date()) },
+            ...data.sites
+          ]
+        };
+      },
+      false
+    );
+
+    onClose();
+
+    await createSite(newSite);
+
+    // trigger a revalidation (refetch) to make sure our local data is correct
+    mutate("/api/sites");
+
+    //TODO: handle unhappy path where the createSite error out
+
     toast({
       title: "Success 🙌 ",
       description: "We've added your site",
@@ -45,7 +73,6 @@ export default function AddSiteModal({
       duration: 5000,
       isClosable: true
     });
-    onClose();
   };
 
   return (

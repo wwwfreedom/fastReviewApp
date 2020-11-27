@@ -1,8 +1,5 @@
 import db from "@/lib/firebase_serverside_adminSdk";
-import dayjs from "dayjs";
-import localizedFormat from "dayjs/plugin/localizedFormat";
-
-dayjs.extend(localizedFormat);
+import formatDate from "@/utils/formatDate";
 
 export default async function handler(_, res) {
   const sites = [];
@@ -15,7 +12,7 @@ export default async function handler(_, res) {
 
   snapshot.forEach((doc) => {
     const { createdAt, ...data } = doc.data();
-    const formattedCreatedAt = dayjs(createdAt.toDate()).format("lll");
+    const formattedCreatedAt = formatDate(createdAt.toDate());
     sites.push({
       id: doc.id,
       createdAt: formattedCreatedAt,
