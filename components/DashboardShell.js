@@ -1,6 +1,7 @@
 import { useAuth } from "@/lib/auth";
 import { Logo } from "@/icons/logo";
 import { Flex, Link, Stack, Avatar } from "@chakra-ui/react";
+import NextLink from "next/link";
 
 const DashboardShell = ({ children }) => {
   const { user } = useAuth();
@@ -14,9 +15,17 @@ const DashboardShell = ({ children }) => {
         px={8}
       >
         <Stack isInline spacing={4} alignItems="center">
-          <Logo color="#000" boxSize="32px" />
-          <Link>Reviews</Link>
-          <Link>Site</Link>
+          <NextLink href="/" passHref>
+            <Link>
+              <Logo color="#000" boxSize="32px" />
+            </Link>
+          </NextLink>
+          <NextLink href="/dashboard" passHref>
+            <Link>Sites</Link>
+          </NextLink>
+          <NextLink href="/feedback" passHref>
+            <Link>Feedback</Link>
+          </NextLink>
         </Stack>
         <Flex alignItems="center">
           {user && <Link mr={4}>Account</Link>}
