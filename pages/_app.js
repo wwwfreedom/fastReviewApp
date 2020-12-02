@@ -30,6 +30,7 @@ const GlobalStyle = ({ children }) => {
   );
 };
 
+// TODO: create global error boundary to catch unhandled error
 function MyApp({ Component, pageProps }) {
   return (
     <>

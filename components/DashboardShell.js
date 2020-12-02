@@ -1,17 +1,7 @@
 import { useAuth } from "@/lib/auth";
 import { Logo } from "@/icons/logo";
-import {
-  Flex,
-  Link,
-  Stack,
-  Avatar,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  Heading,
-  Button
-} from "@chakra-ui/react";
-import AddSiteModal from "./AddSiteModal";
+import { Flex, Link, Stack, Avatar } from "@chakra-ui/react";
+import NextLink from "next/link";
 
 const DashboardShell = ({ children }) => {
   const { user } = useAuth();
@@ -25,9 +15,17 @@ const DashboardShell = ({ children }) => {
         px={8}
       >
         <Stack isInline spacing={4} alignItems="center">
-          <Logo color="#000" boxSize="32px" />
-          <Link>Reviews</Link>
-          <Link>Site</Link>
+          <NextLink href="/" passHref>
+            <Link>
+              <Logo color="#000" boxSize="32px" />
+            </Link>
+          </NextLink>
+          <NextLink href="/dashboard" passHref>
+            <Link>Sites</Link>
+          </NextLink>
+          <NextLink href="/feedback" passHref>
+            <Link>Feedback</Link>
+          </NextLink>
         </Stack>
         <Flex alignItems="center">
           {user && <Link mr={4}>Account</Link>}
@@ -35,31 +33,7 @@ const DashboardShell = ({ children }) => {
         </Flex>
       </Flex>
       <Flex backgroundColor="gray.100" p={8} height="100vh">
-        <Flex maxWidth={800} ml="auto" mr="auto" direction="column" w="100%">
-          <Breadcrumb>
-            <BreadcrumbItem>
-              <BreadcrumbLink color="gray.700" fontSize="sm">
-                Sites
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
-          <Flex justify="space-between" mb={4}>
-            <Heading>Sites</Heading>
-            <AddSiteModal
-              TriggerComponent={({ onClick }) => (
-                <Button
-                  backgroundColor="gray.900"
-                  color="white"
-                  fontWeight="medium"
-                  onClick={onClick}
-                  _hover={{ bg: "gray.700" }}
-                  _active={{ bg: "gray.800", transform: "scale(0.95)" }}
-                >
-                  + Add Site
-                </Button>
-              )}
-            />
-          </Flex>
+        <Flex direction="column" maxWidth={800} mx="auto" w="100%">
           {children}
         </Flex>
       </Flex>
