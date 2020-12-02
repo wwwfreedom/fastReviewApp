@@ -18,7 +18,7 @@ export default function Home() {
       maxWidth="700px"
     >
       <Head>
-        {/* <script
+        <script
           dangerouslySetInnerHTML={{
             __html: `
           if (document.cookie && document.cookie.includes('fast-feedback-auth')) {
@@ -26,7 +26,7 @@ export default function Home() {
           }
         `
           }}
-        /> */}
+        />
         <title>Fast feedback</title>
       </Head>
       <Logo color="#000" boxSize="64px" />
@@ -39,13 +39,28 @@ export default function Home() {
         comment below.
       </Text>
       {auth.user ? (
-        <Button onClick={(e) => auth.signout()}>Sign Out</Button>
+        <Button
+          as="a"
+          href="/dashboard"
+          backgroundColor="gray.900"
+          color="white"
+          fontWeight="medium"
+          mt={4}
+          maxW="200px"
+          _hover={{ bg: "gray.700" }}
+          _active={{
+            bg: "gray.800",
+            transform: "scale(0.95)"
+          }}
+        >
+          View Dashboard
+        </Button>
       ) : (
         <Stack spacing={4}>
           <Button
             size="md"
             leftIcon={<GithubLogo />}
-            onClick={(e) => auth.signinWithGitHub()}
+            onClick={() => auth.signinWithGitHub()}
             backgroundColor="gray.900"
             color="white"
             fontWeight="medium"
@@ -60,7 +75,7 @@ export default function Home() {
           <Button
             leftIcon={<GoogleLogo />}
             size="md"
-            onClick={(e) => ""}
+            onClick={() => auth.signinWithGoogle()}
             backgroundColor="white"
             color="gray.900"
             fontWeight="medium"
