@@ -1,4 +1,4 @@
-import { Box, Button, Code, Flex, Heading, Icon, Text } from "@chakra-ui/react";
+import { Button, Flex, Stack, Text } from "@chakra-ui/react";
 import { useAuth } from "@/lib/auth";
 import { Logo } from "@/icons/logo";
 import GoogleLogo from "@/icons/google";
@@ -13,8 +13,9 @@ export default function Home() {
       direction="column"
       align="center"
       justify="center"
-      w="100%"
       h="100vh"
+      margin="0 auto"
+      maxWidth="700px"
     >
       <Head>
         {/* <script
@@ -28,29 +29,51 @@ export default function Home() {
         /> */}
         <title>Fast feedback</title>
       </Head>
-      <Logo color="#000" boxSize="32px" />
+      <Logo color="#000" boxSize="64px" />
+      <Text mb={4} fontSize="lg" py={4}>
+        <Text as="span" fontWeight="bold" display="inline">
+          Fast Feedback
+        </Text>
+        It's the easiest way to add comments or reviews to your static site.
+        It's still a work-in-progress, but you can try it out by leaving a
+        comment below.
+      </Text>
       {auth.user ? (
         <Button onClick={(e) => auth.signout()}>Sign Out</Button>
       ) : (
-        <Flex>
+        <Stack spacing={4}>
           <Button
-            mt={4}
-            size="sm"
-            mr={4}
+            size="md"
             leftIcon={<GithubLogo />}
             onClick={(e) => auth.signinWithGitHub()}
+            backgroundColor="gray.900"
+            color="white"
+            fontWeight="medium"
+            _hover={{ bg: "gray.700" }}
+            _active={{
+              bg: "gray.800",
+              transform: "scale(0.95)"
+            }}
           >
             Sign In with Github
           </Button>
           <Button
             leftIcon={<GoogleLogo />}
-            mt={4}
-            size="sm"
-            onClick={(e) => auth.signinWithGitHub()}
+            size="md"
+            onClick={(e) => ""}
+            backgroundColor="white"
+            color="gray.900"
+            fontWeight="medium"
+            variant="outline"
+            _hover={{ bg: "gray.100" }}
+            _active={{
+              bg: "gray.100",
+              transform: "scale(0.95)"
+            }}
           >
             Sign In with Google
           </Button>
-        </Flex>
+        </Stack>
       )}
     </Flex>
   );
