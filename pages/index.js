@@ -30,7 +30,7 @@ export default function Home() {
         <title>Fast feedback</title>
       </Head>
       <Logo color="#000" boxSize="64px" />
-      <Text mb={4} fontSize="lg" py={4}>
+      <Text mb={4} fontSize="lg" p={6}>
         <Text as="span" fontWeight="bold" display="inline">
           Fast Feedback
         </Text>
