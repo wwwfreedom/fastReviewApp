@@ -41,26 +41,25 @@ export default function AddSiteModal({
       url
     };
 
+    // get id back from createsite
+    const { id } = createSite(newSite);
+
     // optimistically update the cache and ui
     mutate(
       ["/api/sites", auth.user.token],
-      async (data) => {
-        return {
-          sites: [
-            { ...newSite, createdAt: formatDate(new Date()) },
-            ...data.sites
-          ]
-        };
-      },
+      async (data) => ({
+        sites: [
+          { ...newSite, createdAt: formatDate(new Date()), id },
+          ...data.sites
+        ]
+      }),
       false
     );
 
     onClose();
 
-    await createSite(newSite);
-
     // trigger a revalidation (refetch) to make sure our local data is correct
-    mutate(["/api/sites", auth.user.token]);
+    // mutate(["/api/sites", auth.user.token]);
 
     //TODO: handle unhappy path where the createSite error out
 
