@@ -1,7 +1,9 @@
 import { Box, Button, Code, Flex, Heading, Icon, Text } from "@chakra-ui/react";
 import { useAuth } from "@/lib/auth";
 import { Logo } from "@/icons/logo";
+import GoogleLogo from "@/icons/google";
 import Head from "next/head";
+import GithubLogo from "@/icons/github";
 
 export default function Home() {
   const auth = useAuth();
@@ -15,7 +17,7 @@ export default function Home() {
       h="100vh"
     >
       <Head>
-        <script
+        {/* <script
           dangerouslySetInnerHTML={{
             __html: `
           if (document.cookie && document.cookie.includes('fast-feedback-auth')) {
@@ -23,16 +25,32 @@ export default function Home() {
           }
         `
           }}
-        />
+        /> */}
         <title>Fast feedback</title>
       </Head>
       <Logo color="#000" boxSize="32px" />
       {auth.user ? (
         <Button onClick={(e) => auth.signout()}>Sign Out</Button>
       ) : (
-        <Button mt={4} size="sm" onClick={(e) => auth.signinWithGitHub()}>
-          Sign In
-        </Button>
+        <Flex>
+          <Button
+            mt={4}
+            size="sm"
+            mr={4}
+            leftIcon={<GithubLogo />}
+            onClick={(e) => auth.signinWithGitHub()}
+          >
+            Sign In with Github
+          </Button>
+          <Button
+            leftIcon={<GoogleLogo />}
+            mt={4}
+            size="sm"
+            onClick={(e) => auth.signinWithGitHub()}
+          >
+            Sign In with Google
+          </Button>
+        </Flex>
       )}
     </Flex>
   );
