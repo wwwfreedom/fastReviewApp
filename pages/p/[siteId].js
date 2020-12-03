@@ -52,7 +52,7 @@ export default function SiteFeedback({ initialFeedback }) {
         <FormControl my={8}>
           <FormLabel>Comment</FormLabel>
           <Input ref={register({ required: true })} name="comment" />
-          <Button type="submit" mt={4}>
+          <Button type="submit" mt={4} isDisabled={router.isFallback}>
             Add Comment
           </Button>
         </FormControl>
@@ -81,6 +81,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false // will 404 with no valid id
+    fallback: true // will run getStatic path and regenerate static site on the fly
   };
 }
