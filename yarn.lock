@@ -1220,6 +1220,11 @@
   dependencies:
     tslib "^2.0.0"
 
+"@stripe/stripe-js@^1.11.0":
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/@stripe/stripe-js/-/stripe-js-1.11.0.tgz#00e812d72a7760dae08237875066d263671478ee"
+  integrity sha512-SDNZKuETBEVkernd1tq8tL6wNfVKrl24Txs3p+4NYxoaIbNaEO7mrln/2Y/WRcQBWjagvhDIM5I6+X1rfK0qhQ==
+
 "@styled-system/core@5.1.2":
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/@styled-system/core/-/core-5.1.2.tgz#b8b7b86455d5a0514f071c4fa8e434b987f6a772"

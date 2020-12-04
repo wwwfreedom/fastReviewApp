@@ -28,7 +28,11 @@ const DashboardShell = ({ children }) => {
           </NextLink>
         </Stack>
         <Flex alignItems="center">
-          {user && <Link mr={4}>Account</Link>}
+          {user && (
+            <NextLink href="/account" passHref>
+              <Link mr={4}>Account</Link>
+            </NextLink>
+          )}
           <Avatar size="sm" src={user?.photoUrl} />
         </Flex>
       </Flex>
