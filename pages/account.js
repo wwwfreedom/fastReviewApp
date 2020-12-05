@@ -1,7 +1,7 @@
 import DashboardShell from "@/components/DashboardShell";
 import { useAuth } from "@/lib/auth";
-import { Box, Button } from "@chakra-ui/react";
-import { createCheckoutSession } from "@/lib/firestoreDb";
+import { Box, Button, Stack } from "@chakra-ui/react";
+import { createCheckoutSession, goToBillingPortal } from "@/lib/firestoreDb";
 
 export default function Account() {
   const { user } = useAuth();
@@ -16,7 +16,7 @@ export default function Account() {
 
   return (
     <DashboardShell>
-      <Box>
+      <Stack direction="row">
         <Button
           size="md"
           onClick={() => createCheckoutSession(user.uid)}
@@ -31,7 +31,21 @@ export default function Account() {
         >
           Upgrade to starter
         </Button>
-      </Box>
+        <Button
+          size="md"
+          onClick={() => goToBillingPortal()}
+          backgroundColor="gray.900"
+          color="white"
+          fontWeight="medium"
+          _hover={{ bg: "gray.700" }}
+          _active={{
+            bg: "gray.800",
+            transform: "scale(0.95)"
+          }}
+        >
+          View billing portal
+        </Button>
+      </Stack>
     </DashboardShell>
   );
 }
