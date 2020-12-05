@@ -3,6 +3,8 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { AuthProvider } from "@/lib/auth";
 import themeOverride from "@/styles/theme";
 import { css, Global } from "@emotion/react";
+import { DefaultSeo } from "next-seo";
+import SEO from "../next-seo.config";
 
 const theme = extendTheme(themeOverride);
 
@@ -11,7 +13,6 @@ const GlobalStyle = ({ children }) => {
     <>
       <Head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <title>Fast Review App</title>
       </Head>
       <Global
         styles={css`
@@ -37,6 +38,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <ChakraProvider theme={theme}>
         <AuthProvider>
+          <DefaultSeo {...SEO} />
           <GlobalStyle />
           <Component {...pageProps} />
         </AuthProvider>
