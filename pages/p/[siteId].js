@@ -57,9 +57,10 @@ export default function SiteFeedback({ initialFeedback }) {
           </Button>
         </FormControl>
       </Box>
-      {feedbacks.map((feedback) => (
-        <Feedback key={feedback.id} {...feedback} />
-      ))}
+      {feedbacks &&
+        feedbacks.map((feedback) => (
+          <Feedback key={feedback.id} {...feedback} />
+        ))}
     </Flex>
   );
 }
