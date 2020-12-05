@@ -6,9 +6,11 @@ import getRestApi from "@/utils/getRestApi";
 import SiteTable from "@/components/SiteTable";
 import { useAuth } from "@/lib/auth";
 import SiteTableHeader from "@/components/SiteTableHeader";
+import FreePlanEmptyState from "@/components/FreePlanEmptyState";
 
 export default function Dashboard() {
   const { user } = useAuth();
+  const isPaidAccount = user?.stripeRole;
   const { data } = useSWR(user ? ["/api/sites", user.token] : null, getRestApi);
   if (!data) {
     return (
@@ -19,10 +21,19 @@ export default function Dashboard() {
     );
   }
 
+  if (data.sites.length) {
+    return (
+      <DashboardShell>
+        <SiteTableHeader />
+        <SiteTable sites={data.sites} />
+      </DashboardShell>
+    );
+  }
+
   return (
     <DashboardShell>
-      <SiteTableHeader />
-      {data.sites ? <SiteTable sites={data.sites} /> : <HasPlanEmptyState />}
+      <SiteTableHeader isPaidAccount={isPaidAccount} />
+      {isPaidAccount ? <HasPlanEmptyState /> : <FreePlanEmptyState />}
     </DashboardShell>
   );
 }
