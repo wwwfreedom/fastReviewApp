@@ -43,6 +43,14 @@ class MyDocument extends Document {
             href="/favicons/safari-pinned-tab.svg"
             rel="mask-icon"
           />
+          {process.env.NODE_ENV === "production" && (
+            <script
+              async
+              defer
+              src="https://beampipe.io/js/tracker.js"
+              data-beampipe-domain="fastreviewapp.vercel.app"
+            />
+          )}
         </Head>
         <body>
           <Main />
