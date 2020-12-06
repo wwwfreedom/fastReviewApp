@@ -7,8 +7,9 @@ import SiteTable from "@/components/SiteTable";
 import { useAuth } from "@/lib/auth";
 import SiteTableHeader from "@/components/SiteTableHeader";
 import FreePlanEmptyState from "@/components/FreePlanEmptyState";
+import Page from "@/components/Page";
 
-export default function Dashboard() {
+function Dashboard() {
   const { user } = useAuth();
   const isPaidAccount = user?.stripeRole;
   const { data } = useSWR(user ? ["/api/sites", user.token] : null, getRestApi);
@@ -35,5 +36,13 @@ export default function Dashboard() {
       <SiteTableHeader isPaidAccount={isPaidAccount} />
       {isPaidAccount ? <HasPlanEmptyState /> : <FreePlanEmptyState />}
     </DashboardShell>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <Page name="Dashboard" path="/sites">
+      <Dashboard />
+    </Page>
   );
 }
