@@ -39,7 +39,6 @@ export default function Home({ initialFeedback }) {
         `
             }}
           />
-          <title>Fast feedback</title>
         </Head>
         <Logo color="#000" boxSize="64px" />
         <Text mb={4} fontSize="lg" p={6}>

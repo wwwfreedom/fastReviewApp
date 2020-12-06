@@ -16,6 +16,7 @@ import {
 import DashboardShell from "@/components/DashboardShell";
 import { goToBillingPortal } from "@/lib/firestoreDb";
 import { useAuth } from "@/lib/auth";
+import Page from "@/components/Page";
 
 const FeedbackUsage = () => (
   <StatGroup>
@@ -70,7 +71,7 @@ const SettingsTable = ({ stripeRole, children }) => (
   </Box>
 );
 
-export default function Account() {
+function Account() {
   const { user, signout } = useAuth();
   const [isBillingLoading, setIsBillingLoading] = useState(false);
 
@@ -125,5 +126,13 @@ export default function Account() {
         </SettingsTable>
       </Flex>
     </DashboardShell>
+  );
+}
+
+export default function AccountPage() {
+  return (
+    <Page name="Account" path="/account">
+      <Account />
+    </Page>
   );
 }
