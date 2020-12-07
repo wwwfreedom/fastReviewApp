@@ -4,5 +4,7 @@ export default async function getRestApi(url, token) {
     headers: new Headers({ "Content-Type": "application/json", token }),
     credentials: "same-origin"
   });
-  return (await res).json();
+
+  const json = await res.json();
+  return json;
 }
