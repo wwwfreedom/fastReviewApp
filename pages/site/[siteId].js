@@ -66,7 +66,7 @@ export default function SiteFeedback({ initialFeedback }) {
 }
 
 export async function getStaticProps(context) {
-  const feedback = await getAllFeedback(context.params.siteId);
+  const { feedback } = await getAllFeedback(context.params.siteId);
 
   return { props: { initialFeedback: feedback }, revalidate: 1 };
 }
