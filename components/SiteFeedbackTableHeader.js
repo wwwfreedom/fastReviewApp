@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react";
 import NextLink from "next/link";
 
-export default function FeedbackTableHeader() {
+export default function SiteFeedbackTableHeader({ siteName = "-" }) {
   return (
     <Flex direction="column">
       <Breadcrumb>
@@ -18,9 +18,14 @@ export default function FeedbackTableHeader() {
             </BreadcrumbLink>
           </NextLink>
         </BreadcrumbItem>
+        <BreadcrumbItem>
+          <BreadcrumbLink color="gray.700" fontSize="sm">
+            {siteName}
+          </BreadcrumbLink>
+        </BreadcrumbItem>
       </Breadcrumb>
       <Flex justify="space-between" mb={4}>
-        <Heading>All Feedback</Heading>
+        <Heading>{siteName}</Heading>
       </Flex>
     </Flex>
   );
