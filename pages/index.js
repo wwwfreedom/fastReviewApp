@@ -10,7 +10,7 @@ import FeedbackLink from "@/components/FeedbackLink";
 const siteId = "nOQYSrwTNCZn6TERyFzi";
 
 export async function getStaticProps(context) {
-  const feedback = await getAllFeedback(siteId);
+  const { feedback } = await getAllFeedback(siteId);
 
   return { props: { initialFeedback: feedback || [] }, revalidate: 1 };
 }
