@@ -9,7 +9,7 @@ import SiteTableHeader from "@/components/SiteTableHeader";
 import FreePlanEmptyState from "@/components/FreePlanEmptyState";
 import Page from "@/components/Page";
 
-function Dashboard() {
+function Sites() {
   const { user } = useAuth();
   const isPaidAccount = user?.stripeRole;
   const { data } = useSWR(user ? ["/api/sites", user.token] : null, getRestApi);
@@ -42,7 +42,7 @@ function Dashboard() {
 export default function DashboardPage() {
   return (
     <Page name="Dashboard" path="/sites">
-      <Dashboard />
+      <Sites />
     </Page>
   );
 }

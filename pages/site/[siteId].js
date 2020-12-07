@@ -16,6 +16,7 @@ import { useAuth } from "@/lib/auth";
 import { createFeedback } from "@/lib/firestoreDb";
 import { getAllFeedback, getAllSites } from "@/lib/firestoreDb_admin";
 import formatDate from "@/utils/formatDate";
+import DashboardShell from "@/components/DashboardShell";
 
 export default function SiteFeedback({ initialFeedback }) {
   const { user } = useAuth();
@@ -47,21 +48,23 @@ export default function SiteFeedback({ initialFeedback }) {
   };
 
   return (
-    <Flex direction="column" w="full" maxW="700px" margin="0 auto">
-      <Box as="form" onSubmit={handleSubmit(onCommentSubmit)}>
-        <FormControl my={8}>
-          <FormLabel>Comment</FormLabel>
-          <Input ref={register({ required: true })} name="comment" />
-          <Button type="submit" mt={4} isDisabled={router.isFallback}>
-            Add Comment
-          </Button>
-        </FormControl>
-      </Box>
-      {feedbacks &&
-        feedbacks.map((feedback) => (
-          <Feedback key={feedback.id} {...feedback} />
-        ))}
-    </Flex>
+    <DashboardShell>
+      <Flex direction="column" w="full" maxW="700px" margin="0 auto">
+        <Box as="form" onSubmit={handleSubmit(onCommentSubmit)}>
+          <FormControl my={8}>
+            <FormLabel>Comment</FormLabel>
+            <Input ref={register({ required: true })} name="comment" />
+            <Button type="submit" mt={4} isDisabled={router.isFallback}>
+              Add Comment
+            </Button>
+          </FormControl>
+        </Box>
+        {feedbacks &&
+          feedbacks.map((feedback) => (
+            <Feedback key={feedback.id} {...feedback} />
+          ))}
+      </Flex>
+    </DashboardShell>
   );
 }
 
