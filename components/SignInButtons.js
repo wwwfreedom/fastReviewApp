@@ -14,7 +14,7 @@ export default function SignInButtons() {
       <Button
         size="md"
         leftIcon={<GithubLogo />}
-        onClick={() => signinWithGitHub("/dashboard")}
+        onClick={() => signinWithGitHub("/sites")}
         backgroundColor="gray.900"
         color="white"
         fontWeight="medium"
@@ -29,7 +29,7 @@ export default function SignInButtons() {
       <Button
         leftIcon={<GoogleLogo />}
         size="md"
-        onClick={() => signinWithGoogle("/dashboard")}
+        onClick={() => signinWithGoogle("/sites")}
         backgroundColor="white"
         color="gray.900"
         fontWeight="medium"

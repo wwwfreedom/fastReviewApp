@@ -19,7 +19,7 @@ export default function SiteTableHeader({ isPaidAccount }) {
         </BreadcrumbItem>
       </Breadcrumb>
       <Flex justify="space-between" mb={4}>
-        <Heading>Sites</Heading>
+        <Heading>My Sites</Heading>
         {isPaidAccount && (
           <AddSiteModal
             TriggerComponent={({ onClick }) => (
