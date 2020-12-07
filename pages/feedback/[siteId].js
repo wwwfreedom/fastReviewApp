@@ -1,5 +1,4 @@
 import useSWR from "swr";
-import HasPlanEmptyState from "@/components/HasPlanEmptyState";
 import FeedbackTableSkeleton from "@/components/skeletons/FeedbackTable";
 import DashboardShell from "@/components/DashboardShell";
 import getRestApi from "@/utils/getRestApi";
@@ -8,6 +7,7 @@ import { useAuth } from "@/lib/auth";
 import Page from "@/components/Page";
 import { useRouter } from "next/router";
 import SiteFeedbackTableHeader from "@/components/SiteFeedbackTableHeader";
+import FeedbackEmptyState from "@/components/FeedbackEmptyState";
 
 export function SiteFeedback() {
   const { user } = useAuth();
@@ -32,7 +32,7 @@ export function SiteFeedback() {
       {data.feedback.length ? (
         <FeedbackTable allFeedback={data.feedback} />
       ) : (
-        <HasPlanEmptyState />
+        <FeedbackEmptyState />
       )}
     </DashboardShell>
   );

@@ -1,11 +1,11 @@
 import useSWR from "swr";
-import HasPlanEmptyState from "@/components/HasPlanEmptyState";
 import FeedbackTableSkeleton from "@/components/skeletons/FeedbackTable";
 import DashboardShell from "@/components/DashboardShell";
 import getRestApi from "@/utils/getRestApi";
 import FeedbackTable from "@/components/FeedbackTable";
 import { useAuth } from "@/lib/auth";
 import FeedbackTableHeader from "@/components/FeedbackTableHeader";
+import FeedbackEmptyState from "../components/FeedbackEmptyState";
 
 export default function MyFeedback() {
   const { user } = useAuth();
@@ -28,7 +28,7 @@ export default function MyFeedback() {
       {data.feedback.length ? (
         <FeedbackTable allFeedback={data.feedback} />
       ) : (
-        <HasPlanEmptyState />
+        <FeedbackEmptyState />
       )}
     </DashboardShell>
   );
