@@ -1,10 +1,10 @@
-import { useAuth } from "@/lib/auth";
-import { Logo } from "@/icons/logo";
-import { Flex, Link, Stack, Avatar } from "@chakra-ui/react";
-import NextLink from "next/link";
+import { useAuth } from '@/lib/auth'
+import { Logo } from '@/icons/logo'
+import { Flex, Link, Stack, Avatar } from '@chakra-ui/react'
+import NextLink from 'next/link'
 
 const DashboardShell = ({ children }) => {
-  const { user } = useAuth();
+  const { user } = useAuth()
   return (
     <Flex flexDirection="column">
       <Flex
@@ -42,7 +42,7 @@ const DashboardShell = ({ children }) => {
         </Flex>
       </Flex>
     </Flex>
-  );
-};
+  )
+}
 
-export default DashboardShell;
+export default DashboardShell

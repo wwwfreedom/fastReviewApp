@@ -1,8 +1,8 @@
-import { NextSeo } from "next-seo";
+import { NextSeo } from 'next-seo'
 
 export default function Page({ name, path, children }) {
-  const title = `Fast Review – ${name}`;
-  const url = `https://fastreviewapp.vercel.app${path}`;
+  const title = `Fast Review – ${name}`
+  const url = `https://fastreviewapp.vercel.app${path}`
 
   return (
     <>
@@ -11,10 +11,10 @@ export default function Page({ name, path, children }) {
         canonical={url}
         openGraph={{
           url,
-          title
+          title,
         }}
       />
       {children}
     </>
-  );
+  )
 }

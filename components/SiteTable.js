@@ -1,6 +1,6 @@
-import { Box, Link } from "@chakra-ui/react";
-import { Table, Tr, Th, Td } from "./Table";
-import NextLink from "next/link";
+import { Box, Link } from '@chakra-ui/react'
+import { Table, Tr, Th, Td } from './Table'
+import NextLink from 'next/link'
 
 const SiteTable = ({ sites }) => {
   return (
@@ -41,11 +41,11 @@ const SiteTable = ({ sites }) => {
               </Td>
               <Td>{site.createdAt}</Td>
             </Box>
-          );
+          )
         })}
       </tbody>
     </Table>
-  );
-};
+  )
+}
 
-export default SiteTable;
+export default SiteTable

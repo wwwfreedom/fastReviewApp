@@ -1,22 +1,22 @@
-import { Box, Button, Flex, Text } from "@chakra-ui/react";
-import { useAuth } from "@/lib/auth";
-import { Logo } from "@/icons/logo";
-import Head from "next/head";
-import SignInButtons from "@/components/SignInButtons";
-import { getAllFeedback } from "@/lib/firestoreDb_admin";
-import Feedback from "@/components/Feedback";
-import FeedbackLink from "@/components/FeedbackLink";
+import { Button, Flex, Text } from '@chakra-ui/react'
+import { useAuth } from '@/lib/auth'
+import { Logo } from '@/icons/logo'
+import Head from 'next/head'
+import SignInButtons from '@/components/SignInButtons'
+import { getAllFeedback } from '@/lib/firestoreDb_admin'
+import Feedback from '@/components/Feedback'
+import FeedbackLink from '@/components/FeedbackLink'
 
-const siteId = "nOQYSrwTNCZn6TERyFzi";
+const siteId = 'nOQYSrwTNCZn6TERyFzi'
 
-export async function getStaticProps(context) {
-  const { feedback } = await getAllFeedback(siteId);
+export async function getStaticProps() {
+  const { feedback } = await getAllFeedback(siteId)
 
-  return { props: { initialFeedback: feedback || [] }, revalidate: 1 };
+  return { props: { initialFeedback: feedback || [] }, revalidate: 1 }
 }
 
 export default function Home({ initialFeedback }) {
-  const { user } = useAuth();
+  const { user } = useAuth()
   return (
     <>
       <Flex
@@ -36,7 +36,7 @@ export default function Home({ initialFeedback }) {
           if (document.cookie && document.cookie.includes('fast-feedback-auth')) {
             window.location.href = "/sites"
           }
-        `
+        `,
             }}
           />
         </Head>
@@ -45,8 +45,8 @@ export default function Home({ initialFeedback }) {
           <Text as="span" fontWeight="bold" display="inline">
             Fast Feedback
           </Text>
-          It's the easiest way to add comments or reviews to your static site.
-          It's still a work-in-progress, but you can try it out by leaving a
+          It‘s the easiest way to add comments or reviews to your static site.
+          It‘s still a work-in-progress, but you can try it out by leaving a
           comment below.
         </Text>
         {user ? (
@@ -58,10 +58,10 @@ export default function Home({ initialFeedback }) {
             fontWeight="medium"
             mt={4}
             maxW="200px"
-            _hover={{ bg: "gray.700" }}
+            _hover={{ bg: 'gray.700' }}
             _active={{
-              bg: "gray.800",
-              transform: "scale(0.95)"
+              bg: 'gray.800',
+              transform: 'scale(0.95)',
             }}
           >
             View Dashboard
@@ -80,5 +80,5 @@ export default function Home({ initialFeedback }) {
         </Flex>
       </Flex>
     </>
-  );
+  )
 }

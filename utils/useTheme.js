@@ -1,7 +1,7 @@
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router'
 
 export const useTheme = () => {
-  const { query } = useRouter();
+  const { query } = useRouter()
 
-  return query?.theme || "light";
-};
+  return query?.theme || 'light'
+}

@@ -3,9 +3,9 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   Flex,
-  Heading
-} from "@chakra-ui/react";
-import NextLink from "next/link";
+  Heading,
+} from '@chakra-ui/react'
+import NextLink from 'next/link'
 
 export default function FeedbackTableHeader() {
   return (
@@ -23,5 +23,5 @@ export default function FeedbackTableHeader() {
         <Heading>All Feedback</Heading>
       </Flex>
     </Flex>
-  );
+  )
 }

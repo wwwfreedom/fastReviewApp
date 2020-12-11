@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState } from 'react'
 import {
   Button,
   AlertDialog,
@@ -7,38 +7,38 @@ import {
   AlertDialogHeader,
   AlertDialogBody,
   AlertDialogFooter,
-  IconButton
-} from "@chakra-ui/react";
-import { RiDeleteBinLine } from "react-icons/ri";
-import { mutate } from "swr";
+  IconButton,
+} from '@chakra-ui/react'
+import { RiDeleteBinLine } from 'react-icons/ri'
+import { mutate } from 'swr'
 
-import { deleteFeedback } from "@/lib/firestoreDb";
-import { useAuth } from "@/lib/auth";
+import { deleteFeedback } from '@/lib/firestoreDb'
+import { useAuth } from '@/lib/auth'
 
 export default function RemoveButtonAlert({ feedbackId }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const cancelRef = useRef();
-  const auth = useAuth();
+  const [isOpen, setIsOpen] = useState(false)
+  const cancelRef = useRef()
+  const auth = useAuth()
 
-  const onClose = () => setIsOpen(false);
+  const onClose = () => setIsOpen(false)
   const onDeleteFeedback = async () => {
     // TODO: handle delete error
     mutate(
-      ["/api/feedback", auth.user.token],
+      ['/api/feedback', auth.user.token],
       async (data) => {
         const filteredFeedback = data.feedback.filter(
           (feedback) => feedback.id !== feedbackId
-        );
-        return { feedback: filteredFeedback };
+        )
+        return { feedback: filteredFeedback }
       },
       false
-    );
+    )
 
-    onClose();
+    onClose()
 
-    await deleteFeedback(feedbackId);
-    mutate(["/api/feedback", auth.user.token]);
-  };
+    await deleteFeedback(feedbackId)
+    mutate(['/api/feedback', auth.user.token])
+  }
 
   return (
     <>
@@ -61,7 +61,7 @@ export default function RemoveButtonAlert({ feedbackId }) {
             </AlertDialogHeader>
 
             <AlertDialogBody>
-              Are you sure? You can't undo this action afterwards.
+              Are you sure? You can‘t undo this action afterwards.
             </AlertDialogBody>
 
             <AlertDialogFooter>
@@ -76,5 +76,5 @@ export default function RemoveButtonAlert({ feedbackId }) {
         </AlertDialogOverlay>
       </AlertDialog>
     </>
-  );
+  )
 }

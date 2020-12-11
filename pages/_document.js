@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document {
   render() {
@@ -43,7 +43,7 @@ class MyDocument extends Document {
             href="/favicons/safari-pinned-tab.svg"
             rel="mask-icon"
           />
-          {process.env.NODE_ENV === "production" && (
+          {process.env.NODE_ENV === 'production' && (
             <script
               async
               defer
@@ -57,8 +57,8 @@ class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }
 
-export default MyDocument;
+export default MyDocument

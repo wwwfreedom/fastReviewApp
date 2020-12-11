@@ -1,5 +1,5 @@
-import { Heading, Text, Button, Flex } from "@chakra-ui/react";
-import AddSiteModal from "./AddSiteModal";
+import { Heading, Text, Button, Flex } from '@chakra-ui/react'
+import AddSiteModal from './AddSiteModal'
 
 const HasPlanEmptyState = () => (
   <Flex
@@ -11,9 +11,9 @@ const HasPlanEmptyState = () => (
     align="center"
   >
     <Heading size="lg" mb={2}>
-      You haven't added any sites.
+      You {`haven't`} added any sites.
     </Heading>
-    <Text mb={4}>Welcome 👋 Let's get started.</Text>
+    <Text mb={4}>Welcome 👋 Let‘s get started.</Text>
     <AddSiteModal
       TriggerComponent={({ onClick }) => (
         <Button fontWeight="medium" onClick={onClick}>
@@ -22,6 +22,6 @@ const HasPlanEmptyState = () => (
       )}
     />
   </Flex>
-);
+)
 
-export default HasPlanEmptyState;
+export default HasPlanEmptyState
