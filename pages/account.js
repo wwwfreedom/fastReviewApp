@@ -1,22 +1,23 @@
-import { useState } from "react";
 import {
   Avatar,
-  Heading,
+  Badge,
   Box,
   Button,
   Flex,
-  Text,
-  Badge,
-  StatGroup,
+  Heading,
   Stat,
+  StatGroup,
+  StatHelpText,
   StatLabel,
   StatNumber,
-  StatHelpText
-} from "@chakra-ui/react";
-import DashboardShell from "@/components/DashboardShell";
-import { goToBillingPortal } from "@/lib/firestoreDb";
-import { useAuth } from "@/lib/auth";
-import Page from "@/components/Page";
+  Text,
+} from '@chakra-ui/react'
+import { useState } from 'react'
+
+import DashboardShell from '@/components/DashboardShell'
+import Page from '@/components/Page'
+import { useAuth } from '@/lib/auth'
+import { goToBillingPortal } from '@/lib/firestoreDb'
 
 const FeedbackUsage = () => (
   <StatGroup>
@@ -32,7 +33,7 @@ const FeedbackUsage = () => (
       <StatHelpText>Unlimited Sites</StatHelpText>
     </Stat>
   </StatGroup>
-);
+)
 
 const SettingsTable = ({ stripeRole, children }) => (
   <Box
@@ -69,24 +70,24 @@ const SettingsTable = ({ stripeRole, children }) => (
       {children}
     </Flex>
   </Box>
-);
+)
 
 function Account() {
-  const { user, signout } = useAuth();
-  const [isBillingLoading, setIsBillingLoading] = useState(false);
+  const { user, signout } = useAuth()
+  const [isBillingLoading, setIsBillingLoading] = useState(false)
 
   return (
     <DashboardShell>
       <Flex
         direction="column"
         maxW="600px"
-        align={["left", "center"]}
+        align={['left', 'center']}
         margin="0 auto"
       >
-        <Flex direction="column" align={["left", "center"]} ml={4}>
+        <Flex direction="column" align={['left', 'center']} ml={4}>
           <Avatar
-            w={["3rem", "6rem"]}
-            h={["3rem", "6rem"]}
+            w={['3rem', '6rem']}
+            h={['3rem', '6rem']}
             mb={4}
             src={user?.photoUrl}
           />
@@ -106,18 +107,18 @@ function Account() {
             </Button>
             <Button
               onClick={() => {
-                setIsBillingLoading(true);
-                goToBillingPortal();
+                setIsBillingLoading(true)
+                goToBillingPortal()
               }}
               backgroundColor="gray.900"
               color="white"
               fontWeight="medium"
               ml={4}
               isLoading={isBillingLoading}
-              _hover={{ bg: "gray.700" }}
+              _hover={{ bg: 'gray.700' }}
               _active={{
-                bg: "gray.800",
-                transform: "scale(0.95)"
+                bg: 'gray.800',
+                transform: 'scale(0.95)',
               }}
             >
               Manage Billing
@@ -126,7 +127,7 @@ function Account() {
         </SettingsTable>
       </Flex>
     </DashboardShell>
-  );
+  )
 }
 
 export default function AccountPage() {
@@ -134,5 +135,5 @@ export default function AccountPage() {
     <Page name="Account" path="/account">
       <Account />
     </Page>
-  );
+  )
 }

@@ -1,28 +1,28 @@
-import { Flex, Link } from "@chakra-ui/react";
+import { Flex, Link } from '@chakra-ui/react'
 
-import { useTheme } from "@/utils/useTheme";
+import { useTheme } from '@/utils/useTheme'
 
 export default function FeedbackLink({ paths }) {
-  const colorMode = useTheme();
+  const colorMode = useTheme()
   const linkColor = {
-    light: "gray.900",
-    dark: "gray.100"
-  };
+    light: 'gray.900',
+    dark: 'gray.100',
+  }
 
   return (
     <Flex
-      align={["flex-start", "center"]}
+      align={['flex-start', 'center']}
       justifyContent="space-between"
       mb={8}
       width="full"
       mt={1}
-      direction={["column", "row"]}
+      direction={['column', 'row']}
     >
       <Link
         color={linkColor[colorMode]}
         fontWeight="bold"
         fontSize="sm"
-        href={`/site/${paths.join("/")}`}
+        href={`/site/${paths.join('/')}`}
         target="_blank"
       >
         Leave a comment →
@@ -31,5 +31,5 @@ export default function FeedbackLink({ paths }) {
         Powered by Fast Feedback (Alpha)
       </Link>
     </Flex>
-  );
+  )
 }

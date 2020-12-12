@@ -1,12 +1,14 @@
-import Head from "next/head";
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import { AuthProvider } from "@/lib/auth";
-import themeOverride from "@/styles/theme";
-import { css, Global } from "@emotion/react";
-import { DefaultSeo } from "next-seo";
-import SEO from "../next-seo.config";
+import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import { css, Global } from '@emotion/react'
+import Head from 'next/head'
+import { DefaultSeo } from 'next-seo'
 
-const theme = extendTheme(themeOverride);
+import { AuthProvider } from '@/lib/auth'
+import themeOverride from '@/styles/theme'
+
+import SEO from '../next-seo.config'
+
+const theme = extendTheme(themeOverride)
 
 const GlobalStyle = ({ children }) => {
   return (
@@ -29,8 +31,8 @@ const GlobalStyle = ({ children }) => {
       />
       {children}
     </>
-  );
-};
+  )
+}
 
 // TODO: create global error boundary to catch unhandled error
 function MyApp({ Component, pageProps }) {
@@ -44,7 +46,7 @@ function MyApp({ Component, pageProps }) {
         </AuthProvider>
       </ChakraProvider>
     </>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp

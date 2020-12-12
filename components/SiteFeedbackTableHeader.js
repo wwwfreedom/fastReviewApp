@@ -3,11 +3,11 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   Flex,
-  Heading
-} from "@chakra-ui/react";
-import NextLink from "next/link";
+  Heading,
+} from '@chakra-ui/react'
+import NextLink from 'next/link'
 
-export default function SiteFeedbackTableHeader({ siteName = "-" }) {
+export default function SiteFeedbackTableHeader({ siteName = '-' }) {
   return (
     <Flex direction="column">
       <Breadcrumb>
@@ -28,5 +28,5 @@ export default function SiteFeedbackTableHeader({ siteName = "-" }) {
         <Heading>{siteName}</Heading>
       </Flex>
     </Flex>
-  );
+  )
 }

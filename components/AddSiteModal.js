@@ -1,62 +1,63 @@
-import { useAuth } from "@/lib/auth";
-import { createSite } from "@/lib/firestoreDb";
-import formatDate from "@/utils/formatDate";
 import {
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
   Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
-  FormControl,
-  Input,
-  FormLabel,
-  Button,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   Text,
-  useToast
-} from "@chakra-ui/react";
-import { useRef } from "react";
-import { useForm } from "react-hook-form";
-import { mutate } from "swr";
-const { useDisclosure } = require("@chakra-ui/react");
+  useToast,
+} from '@chakra-ui/react'
+import { useRef } from 'react'
+import { useForm } from 'react-hook-form'
+import { mutate } from 'swr'
+
+import { useAuth } from '@/lib/auth'
+import { createSite } from '@/lib/firestoreDb'
+import formatDate from '@/utils/formatDate'
+const { useDisclosure } = require('@chakra-ui/react')
 
 const DefaultTriggerComponent = ({ ...props }) => (
   <Button {...props}>Open</Button>
-);
+)
 
 export default function AddSiteModal({
-  TriggerComponent = DefaultTriggerComponent
+  TriggerComponent = DefaultTriggerComponent,
 }) {
-  const initialRef = useRef();
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const { register, handleSubmit, errors } = useForm();
-  const toast = useToast();
-  const auth = useAuth();
+  const initialRef = useRef()
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { register, handleSubmit, errors } = useForm()
+  const toast = useToast()
+  const auth = useAuth()
 
   const onAddSiteSubmit = async ({ name, url }) => {
     const newSite = {
       authorId: auth.user.uid,
       name,
-      url
-    };
+      url,
+    }
 
     // get id back from createsite
-    const { id } = createSite(newSite);
+    const { id } = createSite(newSite)
 
     // optimistically update the cache and ui
     mutate(
-      ["/api/sites", auth.user.token],
+      ['/api/sites', auth.user.token],
       async (data) => ({
         sites: [
           { ...newSite, createdAt: formatDate(new Date()), id },
-          ...data.sites
-        ]
+          ...data.sites,
+        ],
       }),
       false
-    );
+    )
 
-    onClose();
+    onClose()
 
     // trigger a revalidation (refetch) to make sure our local data is correct
     // mutate(["/api/sites", auth.user.token]);
@@ -64,13 +65,13 @@ export default function AddSiteModal({
     //TODO: handle unhappy path where the createSite error out
 
     toast({
-      title: "Success 🙌 ",
+      title: 'Success 🙌 ',
       description: "We've added your site",
-      status: "success",
+      status: 'success',
       duration: 5000,
-      isClosable: true
-    });
-  };
+      isClosable: true,
+    })
+  }
 
   return (
     <>
@@ -88,8 +89,8 @@ export default function AddSiteModal({
                 name="name"
                 placeholder="Name"
                 ref={(ref) => {
-                  initialRef.current = ref;
-                  register(ref, { required: true });
+                  initialRef.current = ref
+                  register(ref, { required: true })
                 }}
               />
               {errors.name && (
@@ -130,5 +131,5 @@ export default function AddSiteModal({
         </ModalContent>
       </Modal>
     </>
-  );
+  )
 }

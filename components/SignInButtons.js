@@ -1,12 +1,13 @@
-import { Button, Spinner, Stack } from "@chakra-ui/react";
-import GithubLogo from "@/icons/github";
-import GoogleLogo from "@/icons/google";
-import { useAuth } from "@/lib/auth";
+import { Button, Spinner, Stack } from '@chakra-ui/react'
+
+import GithubLogo from '@/icons/github'
+import GoogleLogo from '@/icons/google'
+import { useAuth } from '@/lib/auth'
 
 export default function SignInButtons() {
-  const { signinWithGitHub, signinWithGoogle, loading } = useAuth();
+  const { signinWithGitHub, signinWithGoogle, loading } = useAuth()
   if (loading) {
-    return <Spinner />;
+    return <Spinner />
   }
 
   return (
@@ -14,14 +15,14 @@ export default function SignInButtons() {
       <Button
         size="md"
         leftIcon={<GithubLogo />}
-        onClick={() => signinWithGitHub("/sites")}
+        onClick={() => signinWithGitHub('/sites')}
         backgroundColor="gray.900"
         color="white"
         fontWeight="medium"
-        _hover={{ bg: "gray.700" }}
+        _hover={{ bg: 'gray.700' }}
         _active={{
-          bg: "gray.800",
-          transform: "scale(0.95)"
+          bg: 'gray.800',
+          transform: 'scale(0.95)',
         }}
       >
         Sign In with Github
@@ -29,19 +30,19 @@ export default function SignInButtons() {
       <Button
         leftIcon={<GoogleLogo />}
         size="md"
-        onClick={() => signinWithGoogle("/sites")}
+        onClick={() => signinWithGoogle('/sites')}
         backgroundColor="white"
         color="gray.900"
         fontWeight="medium"
         variant="outline"
-        _hover={{ bg: "gray.100" }}
+        _hover={{ bg: 'gray.100' }}
         _active={{
-          bg: "gray.100",
-          transform: "scale(0.95)"
+          bg: 'gray.100',
+          transform: 'scale(0.95)',
         }}
       >
         Sign In with Google
       </Button>
     </Stack>
-  );
+  )
 }

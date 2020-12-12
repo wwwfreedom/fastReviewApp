@@ -1,4 +1,4 @@
-import { Heading, Text, Flex } from "@chakra-ui/react";
+import { Flex, Heading, Text } from '@chakra-ui/react'
 
 export default function FeedbackEmptyState() {
   return (
@@ -11,9 +11,9 @@ export default function FeedbackEmptyState() {
       align="center"
     >
       <Heading size="lg" mb={2}>
-        There isn't any feedback.
+        There isn‘t any feedback.
       </Heading>
       <Text mb={4}>Share your site!</Text>
     </Flex>
-  );
+  )
 }

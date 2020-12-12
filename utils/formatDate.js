@@ -1,11 +1,11 @@
-import dayjs from "dayjs";
-import localizedFormat from "dayjs/plugin/localizedFormat";
-dayjs.extend(localizedFormat);
+import dayjs from 'dayjs'
+import localizedFormat from 'dayjs/plugin/localizedFormat'
+dayjs.extend(localizedFormat)
 
-export default function formatDate(dateObj, formatString = "lll") {
+export default function formatDate(dateObj, formatString = 'lll') {
   if (!dateObj) {
-    throw new Error("missing dateobj arg");
+    throw new Error('missing dateobj arg')
   }
 
-  return dayjs(dateObj).format(formatString);
+  return dayjs(dateObj).format(formatString)
 }

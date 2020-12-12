@@ -1,4 +1,4 @@
-import { Box, Divider, Heading, Text } from "@chakra-ui/react";
+import { Box, Divider, Heading, Text } from '@chakra-ui/react'
 
 export default function Feedback({ author, text, createdAt }) {
   return (
@@ -12,5 +12,5 @@ export default function Feedback({ author, text, createdAt }) {
       <Text color="gray.800">{text}</Text>
       <Divider borderColor="gray.200" mb={6} />
     </Box>
-  );
+  )
 }

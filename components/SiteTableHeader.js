@@ -4,9 +4,10 @@ import {
   BreadcrumbLink,
   Button,
   Flex,
-  Heading
-} from "@chakra-ui/react";
-import AddSiteModal from "./AddSiteModal";
+  Heading,
+} from '@chakra-ui/react'
+
+import AddSiteModal from './AddSiteModal'
 
 export default function SiteTableHeader({ isPaidAccount }) {
   return (
@@ -28,8 +29,8 @@ export default function SiteTableHeader({ isPaidAccount }) {
                 color="white"
                 fontWeight="medium"
                 onClick={onClick}
-                _hover={{ bg: "gray.700" }}
-                _active={{ bg: "gray.800", transform: "scale(0.95)" }}
+                _hover={{ bg: 'gray.700' }}
+                _active={{ bg: 'gray.800', transform: 'scale(0.95)' }}
               >
                 + Add Site
               </Button>
@@ -38,5 +39,5 @@ export default function SiteTableHeader({ isPaidAccount }) {
         )}
       </Flex>
     </Flex>
-  );
+  )
 }

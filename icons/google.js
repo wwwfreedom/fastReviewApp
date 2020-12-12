@@ -1,8 +1,8 @@
-import { createIcon } from "@chakra-ui/react";
+import { createIcon } from '@chakra-ui/react'
 
 const GoogleLogo = createIcon({
-  displayName: "Google logo",
-  viewBox: "0 0 533.5 544.3",
+  displayName: 'Google logo',
+  viewBox: '0 0 533.5 544.3',
   path: [
     <path
       key="M533.5 278.4c0-18.5-1.5-37.1-4.7-5"
@@ -23,8 +23,8 @@ const GoogleLogo = createIcon({
       key="M272.1 107.7c38.8-.6 76.3 14 104.4 40."
       d="M272.1 107.7c38.8-.6 76.3 14 104.4 40.8l77.7-77.7C405 24.6 339.7-.8 272.1 0 169.2 0 75.1 58 28.9 150l90.4 70.1c21.5-64.5 81.8-112.4 152.8-112.4z"
       fill="#ea4335"
-    />
-  ]
-});
+    />,
+  ],
+})
 
-export default GoogleLogo;
+export default GoogleLogo
