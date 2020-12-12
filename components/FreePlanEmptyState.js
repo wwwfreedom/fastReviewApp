@@ -1,7 +1,8 @@
+import { Button, Flex, Heading, Text } from '@chakra-ui/react'
 import { useState } from 'react'
-import { Heading, Text, Button, Flex } from '@chakra-ui/react'
-import { createCheckoutSession } from '@/lib/firestoreDb'
+
 import { useAuth } from '@/lib/auth'
+import { createCheckoutSession } from '@/lib/firestoreDb'
 
 export default function FreePlanEmptyState() {
   const { user } = useAuth()

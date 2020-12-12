@@ -1,5 +1,5 @@
-import { Table, Tr, Th } from './Table'
 import FeedbackRow from './FeedbackRow'
+import { Table, Th, Tr } from './Table'
 
 export default function FeedbackTable({ allFeedback }) {
   return (

@@ -1,4 +1,5 @@
 import { Button, Spinner, Stack } from '@chakra-ui/react'
+
 import GithubLogo from '@/icons/github'
 import GoogleLogo from '@/icons/google'
 import { useAuth } from '@/lib/auth'

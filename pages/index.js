@@ -1,11 +1,12 @@
 import { Button, Flex, Text } from '@chakra-ui/react'
-import { useAuth } from '@/lib/auth'
-import { Logo } from '@/icons/logo'
 import Head from 'next/head'
-import SignInButtons from '@/components/SignInButtons'
-import { getAllFeedback } from '@/lib/firestoreDb_admin'
+
 import Feedback from '@/components/Feedback'
 import FeedbackLink from '@/components/FeedbackLink'
+import SignInButtons from '@/components/SignInButtons'
+import { Logo } from '@/icons/logo'
+import { useAuth } from '@/lib/auth'
+import { getAllFeedback } from '@/lib/firestoreDb_admin'
 
 const siteId = 'nOQYSrwTNCZn6TERyFzi'
 

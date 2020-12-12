@@ -1,19 +1,19 @@
-import { useRef, useState } from 'react'
 import {
-  Button,
   AlertDialog,
-  AlertDialogOverlay,
-  AlertDialogContent,
-  AlertDialogHeader,
   AlertDialogBody,
+  AlertDialogContent,
   AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+  Button,
   IconButton,
 } from '@chakra-ui/react'
+import { useRef, useState } from 'react'
 import { RiDeleteBinLine } from 'react-icons/ri'
 import { mutate } from 'swr'
 
-import { deleteFeedback } from '@/lib/firestoreDb'
 import { useAuth } from '@/lib/auth'
+import { deleteFeedback } from '@/lib/firestoreDb'
 
 export default function RemoveButtonAlert({ feedbackId }) {
   const [isOpen, setIsOpen] = useState(false)

@@ -1,22 +1,23 @@
-import { useState } from 'react'
 import {
   Avatar,
-  Heading,
+  Badge,
   Box,
   Button,
   Flex,
-  Text,
-  Badge,
-  StatGroup,
+  Heading,
   Stat,
+  StatGroup,
+  StatHelpText,
   StatLabel,
   StatNumber,
-  StatHelpText,
+  Text,
 } from '@chakra-ui/react'
+import { useState } from 'react'
+
 import DashboardShell from '@/components/DashboardShell'
-import { goToBillingPortal } from '@/lib/firestoreDb'
-import { useAuth } from '@/lib/auth'
 import Page from '@/components/Page'
+import { useAuth } from '@/lib/auth'
+import { goToBillingPortal } from '@/lib/firestoreDb'
 
 const FeedbackUsage = () => (
   <StatGroup>

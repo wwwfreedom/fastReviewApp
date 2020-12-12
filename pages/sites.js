@@ -1,13 +1,14 @@
 import useSWR from 'swr'
-import HasPlanEmptyState from '@/components/HasPlanEmptyState'
-import SiteTableSkeleton from '@/components/skeletons/SiteTable'
+
 import DashboardShell from '@/components/DashboardShell'
-import getRestApi from '@/utils/getRestApi'
-import SiteTable from '@/components/SiteTable'
-import { useAuth } from '@/lib/auth'
-import SiteTableHeader from '@/components/SiteTableHeader'
 import FreePlanEmptyState from '@/components/FreePlanEmptyState'
+import HasPlanEmptyState from '@/components/HasPlanEmptyState'
 import Page from '@/components/Page'
+import SiteTable from '@/components/SiteTable'
+import SiteTableHeader from '@/components/SiteTableHeader'
+import SiteTableSkeleton from '@/components/skeletons/SiteTable'
+import { useAuth } from '@/lib/auth'
+import getRestApi from '@/utils/getRestApi'
 
 function Sites() {
   const { user } = useAuth()

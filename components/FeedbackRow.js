@@ -1,9 +1,11 @@
-import { useAuth } from '@/lib/auth'
-import { updateFeedback } from '@/lib/firestoreDb'
 import { Box, Code, Switch } from '@chakra-ui/react'
 import produce from 'immer'
 import { useState } from 'react'
 import { mutate } from 'swr'
+
+import { useAuth } from '@/lib/auth'
+import { updateFeedback } from '@/lib/firestoreDb'
+
 import RemoveButtonAlert from './RemoveButton'
 import { Td } from './Table'
 

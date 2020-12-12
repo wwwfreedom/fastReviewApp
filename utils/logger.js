@@ -41,4 +41,4 @@ const formatObjectKeys = (headers) => {
   return keyValues
 }
 
-export { logger, formatObjectKeys }
+export { formatObjectKeys, logger }

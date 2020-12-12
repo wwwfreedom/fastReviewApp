@@ -6,6 +6,7 @@ import {
   Flex,
   Heading,
 } from '@chakra-ui/react'
+
 import AddSiteModal from './AddSiteModal'
 
 export default function SiteTableHeader({ isPaidAccount }) {

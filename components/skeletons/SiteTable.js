@@ -1,5 +1,6 @@
 import { Box, Skeleton } from '@chakra-ui/react'
-import { Table, Tr, Th, Td } from '../Table'
+
+import { Table, Td, Th, Tr } from '../Table'
 
 const SkeletonRow = () => (
   <Box as="tr">

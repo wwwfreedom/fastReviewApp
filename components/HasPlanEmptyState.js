@@ -1,4 +1,5 @@
-import { Heading, Text, Button, Flex } from '@chakra-ui/react'
+import { Button, Flex, Heading, Text } from '@chakra-ui/react'
+
 import AddSiteModal from './AddSiteModal'
 
 const HasPlanEmptyState = () => (

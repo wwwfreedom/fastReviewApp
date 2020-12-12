@@ -1,6 +1,7 @@
 import { Box, Link } from '@chakra-ui/react'
-import { Table, Tr, Th, Td } from './Table'
 import NextLink from 'next/link'
+
+import { Table, Td, Th, Tr } from './Table'
 
 const SiteTable = ({ sites }) => {
   return (

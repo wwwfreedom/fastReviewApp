@@ -1,24 +1,25 @@
-import { useAuth } from '@/lib/auth'
-import { createSite } from '@/lib/firestoreDb'
-import formatDate from '@/utils/formatDate'
 import {
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
   Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
-  FormControl,
-  Input,
-  FormLabel,
-  Button,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   Text,
   useToast,
 } from '@chakra-ui/react'
 import { useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { mutate } from 'swr'
+
+import { useAuth } from '@/lib/auth'
+import { createSite } from '@/lib/firestoreDb'
+import formatDate from '@/utils/formatDate'
 const { useDisclosure } = require('@chakra-ui/react')
 
 const DefaultTriggerComponent = ({ ...props }) => (

@@ -1,7 +1,8 @@
-import { useAuth } from '@/lib/auth'
-import { Logo } from '@/icons/logo'
-import { Flex, Link, Stack, Avatar } from '@chakra-ui/react'
+import { Avatar, Flex, Link, Stack } from '@chakra-ui/react'
 import NextLink from 'next/link'
+
+import { Logo } from '@/icons/logo'
+import { useAuth } from '@/lib/auth'
 
 const DashboardShell = ({ children }) => {
   const { user } = useAuth()
