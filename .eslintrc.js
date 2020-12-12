@@ -7,6 +7,7 @@ module.exports = {
       jsx: true, // Enable JSX since we're using React
     },
   },
+  plugins: ['simple-import-sort'],
   settings: {
     react: {
       version: 'detect', // Automatically detect the react version
@@ -37,5 +38,9 @@ module.exports = {
       },
     ],
     'prettier/prettier': ['error', {}, { usePrettierrc: true }], // Use our .prettierrc file as source
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
+    'sort-imports': 'off',
+    'import/order': 'off',
   },
 }
